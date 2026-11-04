@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modern CoCo 3 Software — New software for the Color Computer 3</title>
+<meta name="description" content="Modern CoCo 3 Software: new programs written today for the TRS-80 Color Computer 3 — Prism, a graphical desktop shell, and more — by Keith Clark of Rodney, Ontario. A gift to the CoCo community.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L28 26 L4 26 Z' fill='none' stroke='%2335b6c9' stroke-width='2.5'/%3E%3Cpath d='M16 4 L16 26 L4 26 Z' fill='%23f2a81d' opacity='0.85'/%3E%3C/svg%3E">
+<!--
+  MODERN CoCo 3 SOFTWARE — master front-door page for Keith Clark's CoCo 3 projects.
+  Publish target (not yet published): the GitHub user-site root,
+    https://keithclark1966.github.io/  (repo: keithclark1966/keithclark1966.github.io)
+  Self-contained: all CSS inline, images local under assets/. Outbound links only.
+-->
+<style>
+  :root{
+    --ground:#0a0f14;
+    --ground-2:#0e151c;
+    --panel:#111a22;
+    --panel-2:#152029;
+    --line:#22303c;
+    --ink:#e9eff3;
+    --muted:#9db2bd;
+    --faint:#6d828f;
+    --teal:#35b6c9;
+    --teal-bright:#6fd3e4;
+    --amber:#f2a81d;
+    --radius:14px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--font);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--teal);color:#06222a}
+  a{color:var(--teal-bright);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:20;
+    background:rgba(10,15,20,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-inner{display:flex;align-items:center;gap:14px;padding-top:14px;padding-bottom:14px}
+  .brand{display:flex;align-items:center;gap:11px;color:var(--ink);font-weight:700;letter-spacing:.14em;font-size:15px}
+  .brand:hover{text-decoration:none}
+  .brand svg{display:block}
+  nav.main{margin-left:auto;display:flex;gap:26px;font-size:14.5px}
+  nav.main a{color:var(--muted)}
+  nav.main a:hover{color:var(--ink);text-decoration:none}
+
+  /* ---------- hero ---------- */
+  .hero{padding-top:88px;padding-bottom:30px;text-align:left}
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";display:inline-block;width:26px;height:1px;background:var(--teal);vertical-align:middle;margin-right:12px}
+  h1.wordmark{
+    font-size:clamp(46px,8.2vw,88px);line-height:1.02;font-weight:800;letter-spacing:.01em;
+    margin-bottom:8px;
+  }
+  h1.wordmark .facet{color:var(--teal)}
+  .pitch{
+    font-size:clamp(21px,3vw,28px);line-height:1.4;font-weight:300;color:var(--ink);
+    max-width:760px;margin:18px 0 14px;
+  }
+  .pitch strong{font-weight:600}
+  .meta-row{
+    display:flex;flex-wrap:wrap;gap:10px 26px;font-family:var(--mono);font-size:13px;color:var(--muted);
+    margin:22px 0 54px;
+  }
+  .meta-row span::before{content:"▸ ";color:var(--amber)}
+
+  /* screenshot frame */
+  .screen{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:12px;
+    box-shadow:0 30px 80px rgba(0,0,0,.55),0 4px 18px rgba(0,0,0,.4);
+  }
+  .screen img{display:block;width:100%;height:auto;border-radius:7px;image-rendering:pixelated;background:#000}
+  .screen figcaption{
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding:13px 6px 3px;font-family:var(--mono);font-size:12.5px;color:var(--faint);
+  }
+  .screen figcaption .tag{color:var(--amber)}
+
+  /* ---------- sections ---------- */
+  section.block{padding-top:84px;padding-bottom:8px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-num{font-family:var(--mono);font-size:13px;color:var(--amber);letter-spacing:.15em}
+  h2{font-size:clamp(30px,4.4vw,42px);font-weight:700;letter-spacing:-.01em;line-height:1.15}
+  .sec-head{border-bottom:1px solid var(--line);padding-bottom:20px}
+  .lede{font-size:19px;color:var(--muted);max-width:820px;font-weight:300}
+  .lede strong,.cols p strong{color:var(--ink);font-weight:600}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:28px 56px;margin-top:36px}
+  .cols p{color:var(--muted);margin-bottom:16px}
+  .pull{
+    margin-top:44px;border-left:3px solid var(--teal);padding:6px 0 6px 26px;
+    font-size:clamp(20px,2.6vw,25px);line-height:1.45;font-weight:300;color:var(--ink);max-width:860px;
+  }
+  .pull em{color:var(--teal-bright);font-style:normal}
+  .pull .who{display:block;margin-top:10px;font-size:15px;color:var(--faint)}
+
+  /* ---------- project cards ---------- */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .proj{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;display:flex;flex-direction:column;
+  }
+  .proj.wide{grid-column:1 / -1}
+  .proj .shot{display:block;width:100%;height:auto;image-rendering:pixelated;background:#000;border-bottom:1px solid var(--line)}
+  .tile{
+    height:150px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,var(--panel-2),var(--ground-2));
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono);font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);
+    text-align:center;padding:0 20px;
+  }
+  .tile b{display:block;font-size:44px;letter-spacing:.06em;font-weight:700;margin-bottom:6px}
+  .tile.t b{color:var(--teal)} .tile.a b{color:var(--amber)} .tile.f b{color:var(--muted)}
+  .proj-body{padding:28px 30px 26px;display:flex;flex-direction:column;flex:1}
+  .proj-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+  .proj h3{font-size:24px;font-weight:700;letter-spacing:-.01em}
+  .status{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    border-radius:20px;padding:4px 12px;white-space:nowrap;
+  }
+  .status.released{color:var(--teal-bright);border:1px solid rgba(53,182,201,.5)}
+  .status.dev{color:var(--amber);border:1px solid rgba(242,168,29,.45)}
+  .status.design{color:var(--muted);border:1px solid var(--line)}
+  .proj p{color:var(--muted);margin-bottom:14px}
+  .proj p strong{color:var(--ink);font-weight:600}
+  .proj-links{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;gap:8px 24px;font-size:15px}
+  .proj .none{font-family:var(--mono);font-size:12.5px;color:var(--faint);letter-spacing:.06em}
+
+  /* ---------- news panel ---------- */
+  .dl{
+    background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:52px 40px;text-align:center;margin-top:10px;
+  }
+  .dl h3{font-size:clamp(24px,3.4vw,32px);margin-bottom:12px}
+  .dl p{color:var(--muted);max-width:640px;margin:0 auto 22px}
+  .dl .links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 34px;font-size:16.5px}
+
+  /* ---------- community cards ---------- */
+  .req{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .req .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px}
+  .req .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:10px}
+  .req .v{font-size:18px;font-weight:600;line-height:1.35}
+  .req .n{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.5}
+
+  /* ---------- footer ---------- */
+  footer.site{margin-top:100px;border-top:1px solid var(--line);background:var(--ground-2)}
+  .foot{padding-top:52px;padding-bottom:60px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+  .foot .credit{font-size:17px;line-height:1.6;max-width:520px}
+  .foot .credit b{color:var(--teal-bright);font-weight:600}
+  .foot .fine{font-size:13.5px;color:var(--faint);line-height:1.7}
+  .foot .fine p{margin-bottom:10px}
+
+  @media (max-width:880px){
+    .cols,.proj-grid,.req,.foot{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    body{font-size:16px}
+    .hero{padding-top:56px;padding-bottom:20px}
+    nav.main{display:none}
+    .dl{padding:40px 24px}
+    section.block{padding-top:60px;padding-bottom:4px}
+    .tile{height:120px}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-inner">
+    <a class="brand" href="#top" aria-label="Modern CoCo 3 Software home">
+      <svg width="24" height="24" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 L28 26 L4 26 Z" fill="none" stroke="#35b6c9" stroke-width="2.5"/><path d="M16 4 L16 26 L4 26 Z" fill="#f2a81d" opacity="0.85"/></svg>
+      MODERN CoCo 3 SOFTWARE
+    </a>
+    <nav class="main">
+      <a href="#mission">Mission</a>
+      <a href="#projects">Projects</a>
+      <a href="#news">News</a>
+      <a href="#community">Community</a>
+      <a href="https://keithclark1966.github.io/prism/">Prism</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <div class="wrap hero">
+    <p class="eyebrow">Modern software for the TRS-80 Color Computer 3</p>
+    <h1 class="wordmark">Modern <span class="facet">CoCo&nbsp;3</span><br>Software</h1>
+    <p class="pitch">New programs, written today, for a machine from 1986 — a <strong>graphical desktop</strong>, <strong>utilities</strong> and <strong>games</strong> for the TRS-80 Color Computer 3, by <strong>Keith Clark</strong> of Rodney, Ontario.</p>
+    <div class="meta-row">
+      <span>NitrOS-9 / EOU</span>
+      <span>Built for the maxed CoCo 3 — full 2 MB · HD6309</span>
+      <span>Multi-Pak Interface</span>
+      <span>Orch-90 sound</span>
+      <span>Free — a community gift</span>
+    </div>
+    <figure class="screen">
+      <img src="assets/prism-desktop.png" alt="The Prism desktop running on the CoCo 3: a menu bar reading Prism, File, View, Special across the top with a clock at the right, three drawn drive icons down the right side of a solid blue desktop, a Prism launcher button at bottom left, and the mouse pointer.">
+      <figcaption>
+        <span>Prism — the flagship project, running on the CoCo 3</span>
+        <span class="tag">Released · v0.2.1</span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- ============ MISSION ============ -->
+  <section class="block wrap" id="mission">
+    <div class="sec-head"><span class="sec-num">01</span><h2>The mission</h2></div>
+    <p class="lede">The Color Computer 3 was never held back by its hardware. Its GIME graphics chip, the HD6309 processor and a real multitasking operating system in NitrOS-9 were ahead of what most home computers of its day were doing — what it never got was software written to that standard. <strong>That is the gap this project exists to close.</strong></p>
+    <p class="pull">“My overall project here is to bring the true power of the CoCo 3 out to the community and the software where it should have been back in its heyday. It would have taken over Commodore and Atari computers I think. Or at least I'm going to try to do it that way.”<span class="who">— Keith Clark, on the project</span></p>
+    <div class="cols">
+      <div>
+        <p>Everything here is <strong>written from scratch, today</strong>, with modern tools — and built for the machine at its best: the full <strong>2 MB of RAM</strong>, the <strong>HD6309</strong>, a <strong>Multi-Pak Interface</strong> and <strong>Orch-90 sound</strong>. In 1987 that stack cost a fortune and most owners never touched it; today an emulator hands it to everyone for free, so these programs build for the CoCo 3 at its maximum, no apologies.</p>
+      </div>
+      <div>
+        <p>And it is built the way community software should be: <strong>in the open</strong>, with original code, honest screenshots and honest status labels — what is released is released, what is still on the bench says so. When a program is ready, it will simply be <strong>given away</strong> to the community that has kept this machine alive for forty years.</p>
+      </div>
+    </div>
+    <p class="pull">“We're going to use every capability of this little baby.”<span class="who">— Keith, setting the design rule for everything built here</span></p>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="block wrap" id="projects">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The projects</h2></div>
+    <p class="lede" style="margin-bottom:34px">One flagship, out the door — and the bench behind it. Each project gets its own page as it matures; statuses are kept honest.</p>
+    <div class="proj-grid">
+
+      <article class="proj wide">
+        <img class="shot" src="assets/prism-directory.png" alt="A Prism directory window open on the /DD drive, its amber title bar and drop shadow over the blue desktop, listing real folders — APPS, BBS, BOOTS, CMDS, DEFS and more — with an item count along the bottom.">
+        <div class="proj-body">
+          <div class="proj-top">
+            <h3>Prism</h3>
+            <span class="status released">Released · v0.2.1</span>
+          </div>
+          <p>A <strong>Finder-style graphical shell</strong> for the CoCo 3 under NitrOS-9 EOU: a menu bar, drive icons, <strong>draggable windows</strong> and <strong>double-click program launching</strong> — the desktop the machine always deserved. Written from scratch in C, and <strong>free and open source (MIT)</strong>. Version 0.2.1 is public now; newer builds are in verification.</p>
+          <p class="proj-links">
+            <a href="https://keithclark1966.github.io/prism/">Project page →</a>
+            <a href="https://github.com/keithclark1966/prism">Source on GitHub →</a>
+            <a href="https://keithclark1966.github.io/prism/changes.html">Changes log →</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="tile t"><span><b>SM</b>System Monitor</span></div>
+        <div class="proj-body">
+          <div class="proj-top">
+            <h3>System Monitor</h3>
+            <span class="status dev">In development</span>
+          </div>
+          <p>A utility in the Prism ecosystem that shows what the machine is doing: <strong>processes</strong>, <strong>memory</strong> — with the map of the GIME's 8K blocks — <strong>CPU load</strong>, <strong>drive space</strong> and <strong>uptime</strong>.</p>
+          <p class="proj-links">
+            <a href="https://keithclark1966.github.io/prism/changes.html">Follow progress in the Changes log →</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="tile a"><span><b>O-90</b>Orchestra-90</span></div>
+        <div class="proj-body">
+          <div class="proj-top">
+            <h3>Orch-90 Demo</h3>
+            <span class="status dev">In development</span>
+          </div>
+          <p>A music demo for the <strong>Orchestra-90</strong> cartridge, run through the Multi-Pak Interface: <strong>four synthesized voices</strong> in <strong>stereo</strong>, played by the CoCo 3 itself — a showcase for the sound hardware most owners never heard used properly.</p>
+          <p class="proj-links"><span class="none">No page yet — it gets one when it sings</span></p>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="tile f"><span><b>RTS</b>Real-Time Strategy</span></div>
+        <div class="proj-body">
+          <div class="proj-top">
+            <h3>CoCo RTS <span style="font-size:15px;color:var(--faint);font-weight:400">(working name)</span></h3>
+            <span class="status design">In design</span>
+          </div>
+          <p>A <strong>real-time strategy game</strong> in the Age of Empires mould — villagers, resources, armies, built for the CoCo 3: <strong>a genre the machine never had</strong>. Currently on the drawing board, designed from the start against the full 2 MB machine.</p>
+          <p class="proj-links"><span class="none">No page yet — still on the drawing board</span></p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ NEWS ============ -->
+  <section class="block wrap" id="news">
+    <div class="sec-head"><span class="sec-num">03</span><h2>News</h2></div>
+    <div class="dl">
+      <h3>Development, documented in the open.</h3>
+      <p>Every build is written up as it happens: dated bulletins for the announcements, and a complete changes log — version by version, detail by detail — for anyone who wants the whole story.</p>
+      <div class="links">
+        <a href="https://keithclark1966.github.io/prism/bulletins.html">Bulletin Board →</a>
+        <a href="https://keithclark1966.github.io/prism/changes.html">Changes log →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMUNITY ============ -->
+  <section class="block wrap" id="community">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Community</h2></div>
+    <div class="req">
+      <div class="card">
+        <p class="k">The archive</p>
+        <p class="v"><a href="https://colorcomputerarchive.com/">Color Computer Archive</a></p>
+        <p class="n">The community's library of CoCo software, documentation and history — where finished projects here will also be shared.</p>
+      </div>
+      <div class="card">
+        <p class="k">The source</p>
+        <p class="v"><a href="https://github.com/keithclark1966">Keith Clark on GitHub</a></p>
+        <p class="n">All of the code, in the open — repositories, releases and the project pages, as each program matures.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap foot">
+    <p class="credit">Modern CoCo 3 Software is a gift to the CoCo community from <b>Keith Clark</b> of Rodney, Ontario — designed and built with <b>Muse</b>.</p>
+    <div class="fine">
+      <p>These are original works. They are not affiliated with, endorsed by, or connected to Tandy / Radio Shack.</p>
+      <p>NitrOS-9 and EOU are the work of the NitrOS-9 project community. Screenshots show Prism, the flagship project, captured in MAME.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
