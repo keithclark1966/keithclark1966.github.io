@@ -8,8 +8,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 4 L28 26 L4 26 Z' fill='none' stroke='%2335b6c9' stroke-width='2.5'/%3E%3Cpath d='M16 4 L16 26 L4 26 Z' fill='%23f2a81d' opacity='0.85'/%3E%3C/svg%3E">
 <!--
   MODERN CoCo 3 SOFTWARE — master front-door page for Keith Clark's CoCo 3 projects.
-  Publish target (not yet published): the GitHub user-site root,
+  Published: the GitHub user-site root,
     https://keithclark1966.github.io/  (repo: keithclark1966/keithclark1966.github.io)
+  Refreshed 2026-11-06: screenshots now show Prism v0.2.6.
   Self-contained: all CSS inline, images local under assets/. Outbound links only.
 -->
 <style>
@@ -218,10 +219,10 @@
       <span>Free — a community gift</span>
     </div>
     <figure class="screen">
-      <img src="assets/prism-desktop.png" alt="The Prism desktop running on the CoCo 3: a menu bar reading Prism, File, View, Special across the top with a clock at the right, three drawn drive icons down the right side of a solid blue desktop, a Prism launcher button at bottom left, and the mouse pointer.">
+      <img src="assets/prism-desktop.png" alt="The Prism desktop running on the CoCo 3: a menu bar reading Prism, File, View, Special across the top with a clock at the right, three badge-style drive tiles down the right side of a solid blue desktop — disc platters for /DD and /H1, a floppy for /D0 — a Prism launcher button at bottom left, and a status line reading “Prism 0.2.6”.">
       <figcaption>
         <span>Prism — the flagship project, running on the CoCo 3</span>
-        <span class="tag">Released · v0.2.1</span>
+        <span class="tag">Current build · v0.2.6</span>
       </figcaption>
     </figure>
   </div>
@@ -249,7 +250,7 @@
     <p class="pull">“A complete CoCo 3 with all available software and our own programs.”<span class="who">— Keith Clark, naming the project's goal, 4 November 2026</span></p>
     <div class="cols">
       <div>
-        <p>The foundation is <strong>NitrOS-9 EOU</strong>, the community's modern OS-9 distribution. On it sits <strong>Prism</strong>, the graphical desktop — the machine's face. Around Prism grows a suite of home-grown programs, all written here: the <strong>System Monitor</strong>, an <strong>Orchestra-90 music player</strong> and ongoing <strong>PSG sound work</strong> through the Multi-Pak — one family of software, built as one machine's own.</p>
+        <p>The foundation is <strong>NitrOS-9 EOU</strong>, the community's modern OS-9 distribution. On it sits <strong>Prism</strong>, the graphical desktop — the machine's face. Around Prism grows a suite of home-grown programs, all written here: the <strong>System Monitor</strong>, an <strong>Orchestra-90 music player</strong> (built, and on the test bench — its playback is being perfected) and <strong>PSG sound work</strong> through the Multi-Pak, played and verified by ear — one family of software, built as one machine's own.</p>
       </div>
       <div>
         <p>The library is the <a href="https://colorcomputerarchive.com/">Color Computer Archive</a>'s — four decades of CoCo software, preserved by the community. Their work, not ours, and credited as such. A local copy of their <strong>SDC card image</strong> is now in hand and verified (4 November 2026: <strong>5,367 files, 5,282 disk images</strong>). The next major piece, the <strong>Librarian</strong>, will index that library so the whole collection can be browsed, searched and launched from inside Prism — a few keystrokes away, inside the machine.</p>
@@ -292,13 +293,13 @@
     <div class="proj-grid">
 
       <article class="proj wide">
-        <img class="shot" src="assets/prism-directory.png" alt="A Prism directory window open on the /DD drive, its amber title bar and drop shadow over the blue desktop, listing real folders — APPS, BBS, BOOTS, CMDS, DEFS and more — with an item count along the bottom.">
+        <img class="shot" src="assets/prism-directory.png" alt="A Prism directory window open on the /DD drive, its amber title bar and drop shadow over the blue desktop, listing real folders — APPS, AWK_SAMPLE, BBS, BOOTS, CAL, CMDS, DATA — with “items: 41” along the bottom, and the /DD tile lit amber at the right.">
         <div class="proj-body">
           <div class="proj-top">
             <h3>Prism</h3>
             <span class="status released">Released · v0.2.1</span>
           </div>
-          <p>A <strong>Finder-style graphical shell</strong> for the CoCo 3 under NitrOS-9 EOU: a menu bar, drive icons, <strong>draggable windows</strong> and <strong>double-click program launching</strong> — the desktop the machine always deserved. Written from scratch in C, and <strong>free and open source (MIT)</strong>. Version 0.2.1 is public now; newer builds are in verification.</p>
+          <p>A <strong>Finder-style graphical shell</strong> for the CoCo 3 under NitrOS-9 EOU: a menu bar, badge-style drive tiles, <strong>draggable windows</strong> and <strong>double-click program launching</strong> — the desktop the machine always deserved. Written from scratch in C, and <strong>free and open source (MIT)</strong>. Version 0.2.1 is public now; the exhibit at home already runs <strong>v0.2.6</strong> (pictured here), and v0.2.7 is in testing.</p>
           <p class="proj-links">
             <a href="https://keithclark1966.github.io/prism/">Project page →</a>
             <a href="https://github.com/keithclark1966/prism">Source on GitHub →</a>
@@ -328,7 +329,7 @@
             <h3>Orch-90 Demo</h3>
             <span class="status dev">In development</span>
           </div>
-          <p>A music demo for the <strong>Orchestra-90</strong> cartridge, run through the Multi-Pak Interface: <strong>four synthesized voices</strong> in <strong>stereo</strong>, played by the CoCo 3 itself — a showcase for the sound hardware most owners never heard used properly.</p>
+          <p>A music demo for the <strong>Orchestra-90</strong> cartridge, run through the Multi-Pak Interface: <strong>four synthesized voices</strong> in <strong>stereo</strong>, played by the CoCo 3 itself — a showcase for the sound hardware most owners never heard used properly. Honest status: built and installed in the exhibit, but its playback failed live testing — wrong speed, unanswered keys — so it is <strong>on the bench being rebuilt</strong>, not yet singing.</p>
           <p class="proj-links"><span class="none">No page yet — it gets one when it sings</span></p>
         </div>
       </article>
@@ -365,6 +366,8 @@
     <div class="sec-head"><span class="sec-num">04</span><h2>News</h2></div>
     <div class="dl">
       <h3>Development, documented in the open.</h3>
+      <p><strong>6 November 2026 —</strong> Curtis Boyle, who maintains EOU, has granted permission to bundle EOU with the portable Prism package and blessed its submission to the Color Computer Archive — and will present these pages as a preview on tomorrow's CoCo show (Saturday, 7 November), inviting viewers to help test Prism.</p>
+      <p><strong>5 November 2026 —</strong> Prism v0.2.1 and its boot package were published on GitHub — the first public release.</p>
       <p>Every build is written up as it happens: dated bulletins for the announcements, and a complete changes log — version by version, detail by detail — for anyone who wants the whole story.</p>
       <div class="links">
         <a href="https://keithclark1966.github.io/prism/bulletins.html">Bulletin Board →</a>
@@ -387,6 +390,11 @@
         <p class="v"><a href="https://github.com/keithclark1966">Keith Clark on GitHub</a></p>
         <p class="n">All of the code, in the open — repositories, releases and the project pages, as each program matures.</p>
       </div>
+      <div class="card">
+        <p class="k">Say hello</p>
+        <p class="v"><a href="mailto:keithclark1966@gmail.com">keithclark1966@gmail.com</a></p>
+        <p class="n">Questions, suggestions, a change you'd like to see — or criticism, which is just as welcome. Testers are especially welcome — write and say you'd like to try Prism.</p>
+      </div>
     </div>
   </section>
 
@@ -398,7 +406,7 @@
     <p class="credit">Modern CoCo 3 Software is a gift to the CoCo community from <b>Keith Clark</b> of Rodney, Ontario — designed and built with <b>Muse</b>.</p>
     <div class="fine">
       <p>These are original works. They are not affiliated with, endorsed by, or connected to Tandy / Radio Shack.</p>
-      <p>NitrOS-9 and EOU are the work of the NitrOS-9 project community. Screenshots show Prism, the flagship project, captured in MAME.</p>
+      <p>NitrOS-9 and EOU are the work of the NitrOS-9 project community. Screenshots show Prism, the flagship project (current build v0.2.6), captured in MAME on 6 November 2026.</p>
     </div>
   </div>
 </footer>
